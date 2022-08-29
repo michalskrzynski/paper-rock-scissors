@@ -32,11 +32,31 @@ function playRound(player, computer) {
   return win ? `You Win! ${player} beats ${computer}` : `You Loose! ${computer} beats ${player}`;
 }
 
-function game() {
+let human = 0;
+let computer = 0;
 
-  for(let i=0; i<5; i++) {
-    console.log( playRound( getComputerChoice(), getComputerChoice()) );
+function onPlay( e ) {
+  console.log( human );
+  const choice = e.target.innerText;
+  const result = playRound( choice, getComputerChoice() );
+
+  document.querySelector('#outcome').innerText = result;
+  if( result.includes('You Win!') ) {
+    human = human+1;
+    document.querySelector('#result-human').innerText = human;
+  }
+  if( result.includes('You Loose!') ) {
+    computer = computer+1;
+    document.querySelector('#result-computer').innerText = computer;
+  }
+
+  if( human === 5 ) {
+    alert('You Won!');
+  }
+  if( computer === 5 ) {
+    alert('You Lost!');
   }
 }
 
-game();
+let buttons = document.querySelectorAll('button');
+buttons.forEach( div => div.addEventListener('click', onPlay) );
