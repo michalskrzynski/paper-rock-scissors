@@ -51,10 +51,11 @@ function onPlay( e ) {
   }
 
   if( human === 5 ) {
-    alert('You Won!');
+    setTimeout( () => alert('You Won!'), 0);
+    
   }
   if( computer === 5 ) {
-    alert('You Lost!');
+    setTimeout( () => alert('You Lost!'), 0 );
   }
 }
 
